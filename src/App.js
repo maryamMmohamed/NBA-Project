@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+// import JSON from './db.json'; // JSON dh alias
+import { BrowserRouter , Route } from 'react-router-dom';
+// components
+import Home from './components/home'; 
+import Header from './components/header'; 
+import Footer from './components/footer'; 
+import Teams from './components/teams';
+import Team from './components/team';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+class App extends Component {
+
+  render() {
+
+    return (
+      <BrowserRouter>
+        <div>
+            <Header />
+            <Route exact path='/' component={Home}></Route>
+            <Route exact path='/teams' component={Teams}></Route>
+            <Route exact path='/team/:id' component={Team}></Route>
+            <Footer />
+        </div>
+      </BrowserRouter>
+    )
+  }
+
 }
 
 export default App;
